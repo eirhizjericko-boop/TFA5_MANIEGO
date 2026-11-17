@@ -21,6 +21,9 @@
     </header>
 
     <main class="page-shell">
+        @if (session('success'))
+            <p class="success-message">{{ session('success') }}</p>
+        @endif
         @yield('content')
     </main>
 
