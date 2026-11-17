@@ -7,6 +7,7 @@ Counterboard POS is a small Laravel learning project for IT0049. It demonstrates
 - `/customers` - customer account list
 - `/users` - staff user account list
 
+
 The customer and user pages use Eloquent models to retrieve records from the database. The Blade views display those records with `@foreach`. Migrations and a seeder create and populate both tables.
 
 ## Requirements
@@ -89,3 +90,6 @@ php artisan route:list
 php artisan migrate:status
 php artisan test
 ```
+
+The customer and user pages use static PHP arrays in their controllers as required by the activity. The Blade views display those arrays with `@foreach`. A small customer migration and seeder are also included so the repository contains a database setup that can be extended in a later activity.
+
