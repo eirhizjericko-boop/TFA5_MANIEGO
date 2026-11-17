@@ -4,16 +4,15 @@
 <section class="page-heading compact-heading">
     <p class="eyebrow">ACCOUNT DIRECTORY / STAFF</p>
     <h1>User accounts</h1>
-    <p>These five temporary staff records demonstrate a second controller-to-view data flow in the application.</p>
+    <p>User records are retrieved through the <code>User</code> Eloquent model and displayed with a Blade foreach loop.</p>
 </section>
 
 <div class="account-table">
-    <div class="table-row table-head"><span>Name</span><span>Role</span><span>Shift</span></div>
+    <div class="table-row table-head"><span>Username</span><span>Full name</span></div>
     @foreach ($staffAccounts as $staff)
         <div class="table-row">
-            <span class="person-name">{{ $staff['name'] }}</span>
-            <span>{{ $staff['role'] }}</span>
-            <span><em class="shift">{{ $staff['shift'] }}</em></span>
+            <span class="person-name">{{ $staff->username }}</span>
+            <span>{{ $staff->full_name }}</span>
         </div>
     @endforeach
 </div>

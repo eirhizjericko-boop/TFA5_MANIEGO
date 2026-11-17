@@ -7,7 +7,7 @@ Counterboard POS is a small Laravel learning project for IT0049. It demonstrates
 - `/customers` - customer account list
 - `/users` - staff user account list
 
-The customer and user pages use static PHP arrays in their controllers as required by the activity. The Blade views display those arrays with `@foreach`. A small customer migration and seeder are also included so the repository contains a database setup that can be extended in a later activity.
+The customer and user pages use Eloquent models to retrieve records from the database. The Blade views display those records with `@foreach`. Migrations and a seeder create and populate both tables.
 
 ## Requirements
 
@@ -53,11 +53,12 @@ The customer and user pages use static PHP arrays in their controllers as requir
 
 ```text
 app/Http/Controllers/
-  CustomerController.php   customer array and customer page response
+  CustomerController.php   customer query and customer page response
   PageController.php       landing and about page responses
-  UserController.php       staff array and user page response
+  UserController.php       user query and user page response
 database/migrations/       Laravel database structure files
-database/seeders/          sample database records
+database/seeders/          sample customer and user records
+app/Models/                 Customer and User Eloquent models
 public/css/pos.css          small custom stylesheet
 resources/views/
   layouts/app.blade.php     shared navigation and page shell

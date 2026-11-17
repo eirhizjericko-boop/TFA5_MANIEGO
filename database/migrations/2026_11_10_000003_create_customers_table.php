@@ -8,17 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('customer_accounts', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('full_name');
             $table->string('email')->unique();
-            $table->string('status')->default('Active');
+            $table->string('phone');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('customer_accounts');
+        Schema::dropIfExists('customers');
     }
 };

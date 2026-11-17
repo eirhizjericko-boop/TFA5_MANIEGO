@@ -4,7 +4,7 @@
 <section class="hero-panel">
     <p class="eyebrow">IT0049 · WEB SYSTEM TECHNOLOGIES</p>
     <h1>A small POS workspace<br><span>ready for the next sale.</span></h1>
-    <p class="hero-copy">Counterboard is a beginner-friendly Laravel foundation that keeps the important pieces visible: routes, controllers, Blade views, and temporary account data.</p>
+    <p class="hero-copy">Counterboard is a beginner-friendly Laravel foundation that keeps the important pieces visible: routes, controllers, Blade views, and database records.</p>
     <a class="button" href="{{ route('customers.index') }}">View customer accounts <span>→</span></a>
 </section>
 

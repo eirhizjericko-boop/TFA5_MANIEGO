@@ -10,6 +10,6 @@
 <section class="flow-list">
     <div><b>ROUTE</b><span>Chooses the URL and controller method.</span></div>
     <div><b>CONTROLLER</b><span>Prepares the page response and sample records.</span></div>
-    <div><b>BLADE VIEW</b><span>Displays the content and loops through account arrays.</span></div>
+    <div><b>BLADE VIEW</b><span>Displays the content and loops through Eloquent records.</span></div>
 </section>
 @endsection

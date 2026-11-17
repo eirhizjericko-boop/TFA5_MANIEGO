@@ -34,7 +34,8 @@ h1 span { color: var(--coral); }
 .table-head { color: #716f69; text-transform: uppercase; }
 .person-name { font-weight: 900; }
 em { font-style: normal; }
-.status, .shift { display: inline-block; padding: 6px 10px; font-size: .75rem; font-weight: 900; }
+.status, .shift, .phone { display: inline-block; padding: 6px 10px; font-size: .75rem; font-weight: 900; }
+.phone { background: var(--yellow); }
 .status.active { background: #c9e7ca; }.status.pending { background: var(--yellow); }.status.inactive { background: #ddd9d2; }.shift { background: var(--blue); }
 code { background: #e8e3dc; padding: 2px 5px; }
 .footer { border-top: 2px solid var(--ink); color: #74716b; font-size: .8rem; padding: 22px 7vw; }
