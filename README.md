@@ -1,63 +1,87 @@
-# Counterboard POS TFA7
+# Counterboard POS
 
-This Laravel project extends the TFA6 POS application with editable customer and user accounts, validation, and prepared avatar uploads.
+Counterboard POS is a small Laravel learning project for IT0049. It demonstrates the basic MVC flow with four pages:
 
-## Required pages and forms
-
+- `/` - landing page
+- `/about` - short explanation of the project flow
 - `/customers` - customer account list
-- `/customers/create` - validated customer creation form
-- `/customers/{id}/edit` - customer edit form
-- `/users` - user account list with avatar or placeholder image
-- `/users/create` - validated user creation form
-- `/users/{id}/edit` - user edit form with avatar upload
-- `/about` - project information
+- `/users` - staff user account list
+
+
+The customer and user pages use Eloquent models to retrieve records from the database. The Blade views display those records with `@foreach`. Migrations and a seeder create and populate both tables.
+
+## Requirements
+
+- PHP 8.2 or newer
+- Composer
+- SQLite, MySQL, or another Laravel-supported database
 
 ## Run in Visual Studio Code
 
-Open this folder in Visual Studio Code, then run:
+1. Open this folder in Visual Studio Code.
+2. Open the integrated terminal.
+3. Install PHP packages:
 
-```powershell
-composer install
-copy .env.example .env
-php artisan key:generate
-New-Item database/database.sqlite -ItemType File
-php artisan migrate --seed
-php artisan storage:link
-php artisan serve
-```
+   ```powershell
+   composer install
+   ```
 
-If the SQLite file already exists, skip the `New-Item` command. Open `http://127.0.0.1:8000` in a browser.
+4. Create the environment file and application key:
 
-If PHP is not on your PATH, use the XAMPP PHP executable:
+   ```powershell
+   copy .env.example .env
+   php artisan key:generate
+   ```
 
-```powershell
-C:\xampp\php\php.exe artisan migrate --seed
-C:\xampp\php\php.exe artisan storage:link
-C:\xampp\php\php.exe artisan serve
-```
+5. Create the local SQLite database if it does not exist, then run the migrations and seeder:
 
-## Avatar upload requirement
+   ```powershell
+   New-Item database/database.sqlite -ItemType File
+   php artisan migrate --seed
+   ```
 
-TFA7 uses the Intervention Image package to prepare uploaded images as square JPEG thumbnails. The upload is validated as an image no larger than 2MB, stored through `Storage::disk('public')`, and the resulting path is saved in the `avatar` column.
+   If the SQLite file already exists, skip the `New-Item` command.
 
-Enable the GD extension in XAMPP if image processing is unavailable:
+6. Start Laravel:
 
-1. Open `C:\xampp\php\php.ini`.
-2. Find `;extension=gd`.
-3. Remove the semicolon so it becomes `extension=gd`.
-4. Save the file and restart the PHP server.
+   ```powershell
+   php artisan serve
+   ```
 
-## Project structure
+7. Open `http://127.0.0.1:8000` in a browser.
+
+## Project map
 
 ```text
-app/Http/Controllers/       customer and user form workflows
+app/Http/Controllers/
+  CustomerController.php   customer query and customer page response
+  PageController.php       landing and about page responses
+  UserController.php       user query and user page response
+database/migrations/       Laravel database structure files
+database/seeders/          sample customer and user records
 app/Models/                 Customer and User Eloquent models
-database/migrations/        users, customers, and avatar schema
-database/seeders/           sample account records
-resources/views/            lists, forms, and shared layout
-public/images/              avatar placeholder
-routes/web.php              page, create, edit, and update routes
+public/css/pos.css          small custom stylesheet
+resources/views/
+  layouts/app.blade.php     shared navigation and page shell
+  pages/                    landing and about views
+  accounts/                 customer and user views
+routes/web.php              four application routes
 ```
+
+## GitHub commands
+
+Run these commands in the project folder after creating an empty GitHub repository:
+
+```powershell
+git init
+git add .
+git commit -m "Build Laravel POS foundation"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git push -u origin main
+```
+
+Replace the remote URL with your own GitHub repository URL. Do not commit `.env`; it contains local configuration and is already excluded by Laravel's `.gitignore`.
 
 ## Verification commands
 
@@ -67,4 +91,5 @@ php artisan migrate:status
 php artisan test
 ```
 
-The repository is prepared for local VS Code use and GitHub submission. No hosting setup is included.
+The customer and user pages use static PHP arrays in their controllers as required by the activity. The Blade views display those arrays with `@foreach`. A small customer migration and seeder are also included so the repository contains a database setup that can be extended in a later activity.
+
